@@ -2,6 +2,17 @@
 
    <div class="grid">
 
+      <form>
+         {{> search}}
+         <button data-search="">
+            {{ translate 'search' }}
+            {{{ icon 'search' }}}
+         </button>
+      </form>
+
+      <a href="search.html">search.html</a>
+      <a href="search/index.html">search/index.html</a>
+
       <a href="{{@website.url}}" class="logo">
          {{#if @website.logo}}
             <picture>
@@ -32,8 +43,4 @@
          {{> secondary-menu menus.secondary}}
       {{/if}}
    </nav>
-
-   <section>
-      {{> search}}
-   </section>
 </header>

@@ -1,6 +1,10 @@
 <input
     type="text"
     data-search=""
-    name="{{@config.custom.searchParam}}"
+    {{#if @config.custom.searchParam}}
+        name="{{@config.custom.searchParam}}"
+    {{else}}
+        name="q"
+    {{/if}}
     placeholder="{{ translate 'searching' }}"
 />

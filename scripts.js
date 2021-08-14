@@ -33,9 +33,52 @@
 
 	function setClass(element, css, status) {}
 
+	function onChange(element, next) {
+
+		setEvent(element, 'input', next);
+	}
+
+	function onClick(element, next) {
+
+		setEvent(element, 'click', next);
+	}
+
+	function setEvent(element, event, next, arg) {
+
+		if(!event || !element || !next) return;
+
+		element.addEventListener(event, next, arg);
+	}
+
+	function unsetEvent(element, event, next) {
+
+		if(!event || !element || !next) return;
+
+		element.removeEventListener(event, next);
+	}
+
 	function search() {}
 
 	function init() {
+
+		inputs = getElements('input[data-search]');
+		console.log(inputs)
+
+		loop(inputs, function(input) {
+
+			onChange(input, function(evt) {
+
+				console.log('change', evt.target.value);
+			});
+		});
+
+		var submit = getElement('button[data-search]');
+		console.log(submit)
+
+		onClick(submit, function() {
+
+			console.log('submit');
+		});
 	}
 
 	window.addEventListener('load', init);
