@@ -1,0 +1,71 @@
+{{> head}}
+{{> top}}
+<main>
+   {{#post}}
+
+      <article>
+
+         {{> post-image}}
+
+         <h1>
+            {{name}}
+            <sup>({{postsNumber}})</sup>
+         </h1>
+         
+         {{#if description}}
+            <p>
+               {{description}}
+            </p>
+         {{/if}} 
+
+         <div class="content">{{{text}}}</div>
+
+      </article>
+
+   {{/post}}
+</main>
+{{> footer}}
+
+
+{{> head}}
+{{> top}}
+<main>
+
+   {{#tag}}
+      <div class="hero">
+         
+         {{> post-image}}
+
+         <header class="hero__content">
+            <div class="wrapper">           
+               <h1>
+                  {{name}}
+                  <sup>({{postsNumber}})</sup>
+               </h1>
+               {{#if description}}
+                  <p>{{description}}</p>
+               {{/if}}          
+            </div>
+         </header>
+      </div>
+   {{/tag}}
+
+   <div>
+      {{#each posts}}
+         <article>
+
+            {{> post-image}}
+
+            <h1>{{title}}</h1>
+
+            <div class="excerpt">{{{excerpt}}}</div>
+
+            <a href="{{url}}">visit</a>
+
+         </article>
+      {{/each}}
+      {{> pagination}}
+   </div>
+
+</main>
+{{> footer}}

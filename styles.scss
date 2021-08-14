@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+@import "assets/scss/reset.scss";
+
+$breakpoint-small: 56px;
+$breakpoint-medium: 72px;
+$breakpoint-large: 92px;
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    background: red;
+    height: $breakpoint-small;
+    z-index: 3;
+
+    @include medium() {
+        height: $breakpoint-medium;
+    }
+
+    @include desktop() {
+        height: $breakpoint-large;
+    }
+}
+
+main {
+    margin-top: $breakpoint-small;
+
+    @include medium() {
+        margin-top: $breakpoint-medium;
+    }
+
+    @include desktop() {
+        margin-top: $breakpoint-large;
+    }
+}

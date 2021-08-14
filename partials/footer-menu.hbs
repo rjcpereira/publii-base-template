@@ -1,0 +1,11 @@
+<nav>
+   <ul aria-hidden="true">
+      {{#each items}}
+         <li>
+            {{#if link}}
+               {{> menu-item}}
+            {{/if}}
+         </li>
+      {{/each}}
+   </ul>
+</nav>

@@ -1,0 +1,240 @@
+@charset "UTF-8";
+
+@import "mixins.scss";
+
+html,
+body,
+button {
+    font-size: 14px;
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, Verdana, sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+html {    
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    word-spacing: 1px;
+}
+
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #fafafa;
+
+    &[data-lock] {
+        overflow: hidden;
+    }
+}
+
+img { 
+    height: auto;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+picture {
+    display: inline-block;
+}
+
+article,
+aside,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    
+    @include sizing('border');
+}
+
+.button,
+button,
+.field,
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+.reset,
+textarea {
+    @include reset();
+}
+
+.field,
+select,
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+textarea {
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 36px;
+    line-height: 36px;
+    width: 100%;
+    margin: 0;
+    padding: 0 .5rem;
+    color: #333;
+    background: #fff;
+    border: 1px solid #ddd;
+
+    @include radius(1px);
+    @include placeholder(#888);
+
+    &:hover {
+        border-color: #ccc;
+    }
+
+    &:focus {
+        border-color: #50ABF0;
+    }
+
+    &:hover,
+    &:focus {
+
+        @include placeholder(#555);
+    }
+}
+
+fieldset {
+    display: block;
+    outline: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hide {
+    display: none!important;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+
+    &:focus,
+    &:focus-within,
+    &:hover {
+        outline: none;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+[disabled],
+.loading {
+    cursor: default;
+    pointer-events: none;
+}
+
+[disabled] {
+
+    @include opacity(.5);
+}
+
+.loading {
+
+    @include opacity(.75);
+}
+
+a:not([disabled]),
+.button:not([disabled]),
+button:not([disabled]) {
+    cursor: pointer;
+}
+
+.clear {
+    clear: both;
+}
+
+.fill {
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+.full,
+.float {
+    &-left {
+        float: left;
+    }
+
+    &-right {
+        float: right;
+    }
+}
+
+.full,
+.aling {
+    &-left {
+        text-align: left;
+    }
+
+    &-right {
+        text-align: right;
+    }
+}
+
+.cover {
+    display: block;
+    
+    img {
+        @include fit();
+
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.button,
+button {
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    padding: 0;
+    font-weight: 500;
+    
+    @include sizing('border');
+}
+
+.button:last-child,
+button:last-child {
+    margin: 0;
+}
+
+@include medium() {
+
+    .mobile {
+        display: none!important;
+    }
+}
+
+.grid {
+    @include grid();
+}

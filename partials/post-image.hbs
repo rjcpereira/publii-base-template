@@ -1,0 +1,21 @@
+{{#featuredImage}}
+    <figure class="hero__image hero__image--overlay">                      
+        <img
+            src="{{url}}"
+            {{#if @config.site.responsiveImages}}                           
+                {{responsiveImageAttributes 'featuredImage' srcset.post sizes.post}}
+            {{/if}}
+            {{ lazyload "eager" }}
+            height="{{height}}"
+            width="{{width}}"
+            alt="{{alt}}"
+        >
+        
+        {{#checkIfAny caption credits}}
+            <figcaption>
+                {{caption}}
+                {{credits}}
+            </figcaption>                      
+        {{/checkIfAny}}                      
+    </figure>
+{{/featuredImage}}

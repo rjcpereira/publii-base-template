@@ -1,0 +1,67 @@
+<footer class="footer">
+    <div class="grid">
+        <a href="{{@website.url}}">
+            {{#if @website.logo}}
+                <picture class="logo">
+                    <img src="{{@website.logo}}" alt="{{@website.name}}" width="{{@website.logoSize.width}}" height="{{@website.logoSize.height}}"/>
+                </picture>
+            {{/if}}
+        </a>
+        {{#if menus.other}}
+            {{> footer-menu menus.other}}
+        {{/if}}
+        {{#if menus.socials}}
+            {{> footer-menu menus.socials}}
+        {{/if}}
+        {{#if menus.mentor}}
+            {{> footer-menu menus.mentor}}
+        {{/if}}
+    </div>
+</footer>
+
+{{#if @config.custom.backToTopButton}}
+    <button class="footer__bttop js-footer__bttop" aria-label="{{ translate 'partials.footer.backToTop' }}"> 
+        <svg>
+            <title>{{ translate 'partials.footer.backToTop' }}</title>
+            <use xlink:href="{{@website.assetsUrl}}/svg/svg-map.svg#toparrow" />
+        </svg>
+    </button>   
+{{/if}}
+
+<script defer src="{{js "scripts.min.js"}}"></script>
+{{#if @config.site.mediaLazyLoad}}
+    <script>        
+        var images = document.querySelectorAll('img[loading]');
+
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }
+    </script>
+{{/if}}
+{{#is "post"}}
+   {{#post}}
+      {{#if hasGallery}}
+          {{> photoswipe}}
+      {{/if}}
+  {{/post}}
+{{/is}}
+{{#checkIf @config.custom.frontSource '==' "post"}}
+   {{#checkIf @config.custom.frontGallery '==' true}}
+      {{#is "index"}}
+          {{> photoswipe}}
+      {{/is}}
+   {{/checkIf}}
+{{/checkIf}}
+{{#if @renderer.previewMode}}
+<script defer src="{{js "svg-map.js"}}"></script>
+<script defer src="{{js "svg-fix.js"}}"></script>
+{{/if}}
+{{#debug}}{{/debug}}
+</body>
+</html>

@@ -1,0 +1,35 @@
+{{> head}}
+{{> top}}
+<main>
+
+   <h1>{{ translate 'search' }}</h1>
+
+   <fieldset action="{{@website.searchUrl}}">
+      <input
+         type="text"
+         name="{{@config.custom.searchParam}}"
+         placeholder="{{ translate 'searching' }}"
+      />
+      <button>
+         {{{ icon 'search' }}}
+      </button>
+   </fieldset>
+
+   {{#search}}
+   
+      <article>
+
+         {{> post-image}}
+
+         <h1>{{title}}</h1>
+
+         <div class="excerpt">{{{excerpt}}}</div>
+
+         <a href="{{url}}">visit</a>
+
+      </article>
+
+   {{/search}}
+   
+</main>
+{{> footer}}

@@ -1,0 +1,35 @@
+<header class="header">
+
+    <div class="grid">
+
+      <a href="{{@website.url}}" class="logo">
+         {{#if @website.logo}}
+            <picture>
+               <img src="{{@website.logo}}" alt="{{@website.name}}" width="{{@website.logoSize.width}}" height="{{@website.logoSize.height}}"/>
+            </picture>
+         {{/if}}
+      </a>
+
+      <nav class="main-menu">
+
+         <button>
+            {{{ icon 'menu' }}}
+         </button>
+
+         <button>
+            {{{ icon 'search' }}}
+         </button>
+
+         {{#if menus.main}}
+            {{> main-menu menus.main}}
+         {{/if}}
+      </nav>
+   </div>
+
+   <nav class="secondary-menu">
+
+      {{#if menus.secondary}}
+         {{> secondary-menu menus.secondary}}
+      {{/if}}
+   </nav>
+</header>

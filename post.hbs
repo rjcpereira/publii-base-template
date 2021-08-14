@@ -1,0 +1,18 @@
+{{> head}}
+{{> top}}
+<main>
+   {{#post}}
+
+      <article>
+
+         {{> post-image}}
+
+         <h1>{{title}}</h1>
+
+         <div class="content">{{{text}}}</div>
+
+      </article>
+
+   {{/post}}
+</main>
+{{> footer}}

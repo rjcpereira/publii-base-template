@@ -1,0 +1,19 @@
+<a
+   href="{{menuUrl}}"
+   {{#if title}}
+      title="{{title}}"
+   {{/if}}
+   {{#if target}}
+      target="{{target}}"
+   {{/if}}
+   {{#if rel}}
+      rel="{{rel}}"
+   {{/if}}
+   {{#if items}} 
+      aria-haspopup="true"
+   {{/if}}>
+   {{#if cssClass}}
+      {{{ icon cssClass }}}
+   {{/if}}
+   {{label}}
+</a>

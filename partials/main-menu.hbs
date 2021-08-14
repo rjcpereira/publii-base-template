@@ -1,0 +1,21 @@
+{{#unless level}}
+   <button
+      aria-label="{{ translate 'partials.menu.label' }}"
+      aria-haspopup="true"
+      aria-expanded="false">
+   </button>
+{{/unless}}
+
+<ul aria-hidden="true">
+   {{#each items}}
+      <li>
+         {{#if link}}
+            {{> menu-item}}
+         {{/if}}
+
+         {{#if items}}
+            {{> main-menu}}
+         {{/if}}
+      </li>
+   {{/each}}
+</ul>

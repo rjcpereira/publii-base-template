@@ -1,0 +1,20 @@
+{{> head}}
+{{> top}}
+
+<main>
+   {{#each posts}}
+      <article>
+
+         {{> post-image}}
+
+         <h1>{{title}}</h1>
+
+         <div class="excerpt">{{{excerpt}}}</div>
+
+         <a href="{{url}}">visit</a>
+
+      </article>
+   {{/each}}
+   {{> pagination}}
+</main>
+{{> footer}}

@@ -1,0 +1,49 @@
+{{!-- TODO --}}
+<!DOCTYPE html>
+<html lang="{{ @website.language }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{#if title}}
+            <title>{{title}}</title>
+        {{else}}
+            <title>{{@website.name}}</title>
+        {{/if}}
+        {{metaDescription}}
+        {{metaRobots}} 
+        {{{publiiHead}}}
+        {{canonicalLink}}
+        {{ampLink}}
+        {{feedLink}}
+        {{socialMetaTags}}
+        {{#if @config.custom.faviconUpload}}
+            <link rel="shortcut icon" href="{{@config.custom.faviconUpload}}" type="{{@config.custom.faviconExtension}}" />
+        {{/if}}
+        {{#if @pagination}}
+            {{#if @pagination.previousPage}}
+                <link rel="prev" href="{{@pagination.previousPageUrl }}">
+            {{/if}}
+            {{#if @pagination.nextPage}}
+                <link rel="next" href="{{@pagination.nextPageUrl }}">
+            {{/if}}
+        {{/if}}
+        {{> fonts}}  
+        <link rel="stylesheet" href="{{css "styles.css" }}">
+        {{#is "post"}}
+            {{#post}}
+                {{#if hasGallery}}
+                    {{> head-photoswipe}}
+                {{/if}}
+            {{/post}}
+        {{/is}}	
+        {{#checkIf @config.custom.frontSource '==' "post" }}
+            {{#checkIf @config.custom.frontGallery '==' true}}
+                {{#is "index"}}
+                    {{> head-photoswipe}}
+                {{/is}}	
+            {{/checkIf}}
+        {{/checkIf}}
+        {{jsonLD}}
+    </head>
+<body>

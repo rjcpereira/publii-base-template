@@ -1,0 +1,20 @@
+<ul class="grid">
+   {{#each items}}
+      <li>
+         {{#if link}}
+            {{> menu-item}}
+         {{else}}
+            <span 
+               class="is-separator"
+               {{#if title}}
+                  title="{{title}}"
+               {{/if}} 
+               {{#if items}} 
+                  aria-haspopup="true"
+               {{/if}}>
+               {{label}}
+            </span>
+         {{/if}}
+      </li>
+   {{/each}}
+</ul>
