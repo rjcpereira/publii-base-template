@@ -13,17 +13,19 @@ gulp.task('styles', () => gulp.src('styles.scss').pipe(sass({
     outputStyle: 'compressed'
 }).on('error', sass.logError))
     .pipe(rename('main.css')).pipe(gulp.dest('assets/css'))
-    .pipe(rename('styles.css')).pipe(gulp.dest('assets/css'))
+    .pipe(rename('style.css')).pipe(gulp.dest('assets/css'))
     .pipe(rename('main.css')).pipe(gulp.dest('../../../preview/assets/css'))
-    .pipe(rename('styles.css')).pipe(gulp.dest('../../../preview/assets/css'))
+    .pipe(rename('style.css')).pipe(gulp.dest('../../../preview/assets/css'))
 );
 
-gulp.task('reset', () => del(['assets/js/scripts.min.js', 'assets/css/main.css', 'assets/css/styles.css']));
+gulp.task('reset', () => del(['assets/js/scripts.min.js', 'assets/css/main.css', 'assets/css/style.css']));
 
 gulp.task('watch', () => gulp.watch(['assets/scss/*.scss', 'styles.scss', 'scripts.js'], gulp.series(['build'])));
 
 gulp.task('build', gulp.series(['reset', 'scripts', 'styles']));
 
 gulp.task('dev', gulp.series(['build', 'watch']));
+
+gulp.task('prod', gulp.series(['build']));
 
 gulp.task('default', gulp.series(['dev']));

@@ -11,21 +11,25 @@ A small set of helpers, icons with Hot Reload for JS and SCSS.
 
 You can change the theme name, info and config in these files:
 
-- `config.json`;
-- `README.md`;
-- `package.json`;
-- `BASE_TEMPLATE.lang.json`;
+- `config.json`
+- `README.md`
+- `package.json`
+- `BASE_TEMPLATE.lang.json`
 
 ## Install
 
-- install `BASE_TEMPLATE` theme;
-- point the site theme to `BASE_TEMPLATE`;
-- open the folder: `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE`;
-- run `npm i`;
+- install `BASE_TEMPLATE` theme
+- point the site theme to `BASE_TEMPLATE`
+- open the folder: `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE`
+- run `npm i`
 
-## Use (to build and watch JS and SCSS)
+## Build for production
 
-- run `gulp`;
+- run `gulp build` or `gulp prod`
+
+## Development (to build and watch JS and SCSS)
+
+- run `gulp` or `gulp dev`
 
 ### Helpers
 
@@ -80,12 +84,12 @@ Every change on `scripts.js` and `styles.scss` will minify and save the content 
 
 #### scripts.js
 
-- `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE/assets/js/scripts.min.js`;
-- `Publii/sites/YOUR_SITE/preview/themes/BASE_TEMPLATE/assets/js/scripts.min.js`;
+- `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE/assets/js/scripts.min.js`
+- `Publii/sites/YOUR_SITE/preview/themes/BASE_TEMPLATE/assets/js/scripts.min.js`
 
 #### styles.scss (scss/reset.scss & scss/mixins.scss)
 
-- `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE/assets/css/main.scss`;
-- `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE/assets/css/styles.scss`;
-- `Publii/sites/YOUR_SITE/preview/themes/BASE_TEMPLATE/assets/css/main.scss`;
-- `Publii/sites/YOUR_SITE/preview/themes/BASE_TEMPLATE/assets/css/styles.scss`;
+- `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE/assets/css/main.scss`
+- `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE/assets/css/styles.scss`
+- `Publii/sites/YOUR_SITE/preview/themes/BASE_TEMPLATE/assets/css/main.scss`
+- `Publii/sites/YOUR_SITE/preview/themes/BASE_TEMPLATE/assets/css/styles.scss`
