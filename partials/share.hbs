@@ -1,0 +1,21 @@
+{{#checkIfAny @config.post.displayTags @config.post.displayShareButtons}}
+    <aside>
+        {{#if @config.post.displayTags}}
+            {{#if tags}}
+                <ul class="post-tag">                   
+                    {{#each tags}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+        {{/if}}
+    
+        {{#checkIf @config.post.displayShareButtons '&&' @amp.shareButtons}}
+            <div>
+                {{> amp-share-buttons}}
+            </div>                  
+        {{/checkIf}}                        
+    </aside>
+{{/checkIfAny}}

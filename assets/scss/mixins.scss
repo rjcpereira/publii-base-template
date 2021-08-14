@@ -40,7 +40,6 @@
 
 @mixin blur($value: 10) {
 
-    filter: url(blur.svg#blur);
     -webkit-filter: #{"blur(#{$value}px)"};
     -khtml-filter: #{"blur(#{$value}px)"};
     -moz-filter: #{"blur(#{$value}px)"};

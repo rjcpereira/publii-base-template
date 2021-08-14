@@ -1,0 +1,21 @@
+<amp-img
+    src="{{url}}"
+    alt="{{alt}}"
+    {{#if srcset.amp}}
+    srcset="{{srcset.amp}}"
+    {{else}}
+        {{#if srcset}}
+    srcset="{{srcset}}"
+        {{/if}}
+    {{/if}}
+    {{#if sizes.amp}}
+    sizes="{{sizes.amp}}"
+    {{else}}
+        {{#if sizes}}
+    sizes="{{sizes}}"
+        {{/if}}
+    {{/if}}
+    height="{{height}}"
+    layout="responsive"
+    width="{{width}}">
+</amp-img>

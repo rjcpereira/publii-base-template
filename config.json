@@ -63,7 +63,47 @@
             "upload": true
         }
     ],
-    "customConfig": [],
+    "customConfig": [
+        {
+            "name": "frontPost",
+            "label": "Posts",
+            "group": "Layout",
+            "note": "We strongly recommended 'hide' and 'noindex' the selected post to avoid the duplicate content issue.",
+            "value": "",
+            "type": "posts-dropdown", 
+            "dependencies": [
+            {
+                "field": "frontSource",
+                "value": "post"
+            }]
+        },
+
+
+        {
+            "name": "heroImage",
+            "label": "Image",
+            "group": "Hero",
+            "value": "",
+            "type": "upload",
+            "upload": true
+        },
+        {
+            "name": "heroAlt",
+            "label": "Image Alt text",
+            "group": "Hero",
+            "placeholder": "Add an alternative text to the hero image",
+            "value": "",
+            "type": "text"
+        },
+        {
+            "name": "heroCaption",
+            "label": "Image Caption",
+            "group": "Hero",
+            "placeholder": "Add text caption to the hero image",
+            "value": "",
+            "type": "text"
+        },
+    ],
     "customElements": [],
     "postConfig": [],
     "postTemplates": {},

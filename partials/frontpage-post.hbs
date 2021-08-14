@@ -1,121 +1,39 @@
 {{!-- TODO --}}
 <main>
    {{#getPost @config.custom.frontPost}}
-      <article class="post">
-         <div class="hero">
+      <article>
+         <header>
             {{#featuredImage}}
                {{#if url}}
-                  <figure class="hero__image hero__image--overlay">
-                      
-                     <img
-                        src="{{url}}"
-                        {{#if @config.site.responsiveImages}}                           
-                            {{responsiveImageAttributes 'featuredImage' srcset.post sizes.post}}
-                        {{/if}}
-                        {{ lazyload "eager" }}
-                        height="{{height}}"
-                        width="{{width}}"
-                        alt="{{alt}}">
-                      
-                     {{#checkIfAny caption credits}}
-                        <figcaption>
-                           {{caption}}
-                           {{credits}}
-                        </figcaption>                      
-                     {{/checkIfAny}}
-                      
-                  </figure>
+                  {{> image}}
                {{else}}
-                  {{#checkIfAll @config.custom.uploadHero @config.custom.displayHeroImage}}
-                     <figure class="hero__image hero__image--overlay">
-                         
-                        <img
-                           src="{{@config.custom.uploadHero}}"
-                           {{#if @config.site.responsiveImages}}
-                              {{responsiveImageAttributes @config.custom.uploadHero}}
-                           {{/if}}
-                           {{ lazyload "eager" }}
-                           alt="{{@config.custom.uploadHeroAlt}}">
-                         
-                        {{#if @config.custom.uploadHeroCaption}}
-                           <figcaption>
-                              {{@config.custom.uploadHeroCaption}}
-                           </figcaption>
-                        {{/if}}
-                         
-                     </figure>
-                  {{/checkIfAll}}
+                  {{> hero}}
                {{/if}}
             {{/featuredImage}}
-            <header class="hero__content">
-               <div class="wrapper">
-                  <h1>
-                     {{title}}
-                  </h1>
-                  {{#if postViewConfig.displayAuthor}}
-                     <div class="post__meta post__meta--author">
-                        {{#author}}
-                           {{#if avatar}}                            
-                             <img 
-                                   src="{{avatar}}" 
-                                   {{ lazyload "eager" }}  
-                                   alt="{{name}}" 
-                                   class="post__author-thumb">    
-                           {{/if}}
-                           <a href="{{url}}" class="feed__author invert">{{name}}</a>
-                        {{/author}}
-                     </div>
-                  {{/if}}
-               </div>
-            </header>
-         </div>
-
-         <div class="wrapper post__entry">
-            {{{text}}}  
-         </div>
-
-         {{#checkIfAny postViewConfig.displayTags postViewConfig.displayShareButtons}}
-            <footer class="wrapper post__footer">
-
-               {{#if postViewConfig.displayTags}}
-                  {{#if tags}}
-                     <ul class="post__tag">
-                        {{#each tags}}
-                           <li>
-                              <a href="{{url}}">{{name}}</a>
-                           </li>
-                        {{/each}}
-                     </ul>
-                  {{/if}}
-               {{/if}}
-
-               {{#if postViewConfig.displayShareButtons}}
-                  <div class="post__share">
-                     {{> share-buttons}}
+            <div>
+               <h1>
+                  {{title}}
+               </h1>
+               {{#if postViewConfig.displayAuthor}}
+                  <div>
+                     {{#author}}
+                        {{#if avatar}}                            
+                           <img 
+                                 src="{{avatar}}" 
+                                 {{ lazyload "eager" }}  
+                                 alt="{{name}}">    
+                        {{/if}}
+                        <a href="{{url}}">{{name}}</a>
+                     {{/author}}
                   </div>
                {{/if}}
-            </footer>
-         {{/checkIfAny}}
+            </div>
+         </header>
+
+         <div>
+            {{{text}}}  
+         </div>
       </article>
-
-      {{#if postViewConfig.displayComments}}
-         <div class="post__comments">
-            <div class="wrapper">
-               <h2 class="h5">
-                  {{ translate 'post.comments' }}
-               </h2>
-               {{> disqus}}
-            </div>
-         </div>
-      {{/if}}
-
-      {{#if @customHTML.afterPost}}
-         <div class="banner banner--after-post">
-            <div class="wrapper">
-               {{{@customHTML.afterPost}}}
-            </div>
-         </div>
-      {{/if}}
     
    {{/getPost}}
 </main>

@@ -9,6 +9,9 @@
     "top": "Back to Top",
     "social": "Social Networks",
     "socials": {
+        "mix": "Mix",
+        "vimeo": "Vimeo",
+        "buffer": "Buffer",
         "facebook": "Facebook",
         "twitter": "Twitter",
         "pinterest": "Pinterest",
@@ -37,9 +40,7 @@
         "tagsPageTitle": "Tags",
         "description": "Collection of all tags"
     },
-    "author": {
-        "visitWebsite": "Visit website"
-    },
+    "author": {},
     "error": {
         "404": "404",
         "message-1": "Page not found",

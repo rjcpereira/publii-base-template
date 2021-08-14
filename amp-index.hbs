@@ -1,48 +1,34 @@
 {{> amp-head}}
 
 {{#checkIf @config.custom.frontSource '==' "post" }}
+
    {{> amp-frontpage-post}}
 {{else}}
-    <main class="wrap-page">
+
+    <main>
+
         {{#each posts}}
-       <article class="card">           
-           {{#featuredImage}}
-                {{#if url}}
-                <a href="{{../url}}">
-                    <amp-img
-                        src="{{url}}"
-                        alt="{{alt}}"
-                        {{#if srcset.amp}}
-                        srcset="{{srcset.amp}}"
-                        {{else}}
-                            {{#if srcset}}
-                        srcset="{{srcset}}"
-                            {{/if}}
-                        {{/if}}
-                        {{#if sizes.amp}}
-                        sizes="{{sizes.amp}}"
-                        {{else}}
-                            {{#if sizes}}
-                        sizes="{{sizes}}"
-                            {{/if}}
-                        {{/if}}
-                        height="{{height}}"
-                        layout="responsive"
-                        width="{{width}}">
-                    </amp-img>
-                </a>
-                {{/if}}
-            {{/featuredImage}}           
-           
-            <div class="card-text">
-                <h2>
-                    <a href="{{url}}"> {{title}} </a>
-                </h2>                
-                <p>{{{excerpt}}}</p>        
-            </div>          
-        </article>
+        
+            <article>           
+                {{#featuredImage}}
+                    {{#if url}}
+                    <a href="{{../url}}">
+                        {{> amp-image}}
+                    </a>
+                    {{/if}}
+                {{/featuredImage}}           
+                
+                <div>
+                    <h2>
+                        <a href="{{url}}"> {{title}} </a>
+                    </h2>                
+                    <p>{{{excerpt}}}</p>        
+                </div>          
+            </article>
         {{/each}}
+
         {{> amp-pagination}}        
     </main>
+
 {{/checkIf}}	
 {{> amp-footer}}

@@ -32,22 +32,19 @@
 <main>
 
    {{#tag}}
-      <div class="hero">
-         
-         {{> post-image}}
+      <header>
 
-         <header class="hero__content">
-            <div class="wrapper">           
-               <h1>
-                  {{name}}
-                  <sup>({{postsNumber}})</sup>
-               </h1>
-               {{#if description}}
-                  <p>{{description}}</p>
-               {{/if}}          
-            </div>
-         </header>
-      </div>
+         {{> post-image}}
+         <div>           
+            <h1>
+               {{name}}
+               <sup>({{postsNumber}})</sup>
+            </h1>
+            {{#if description}}
+               <p>{{description}}</p>
+            {{/if}}          
+         </div>
+      </header>
    {{/tag}}
 
    <div>

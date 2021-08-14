@@ -1,0 +1,18 @@
+{{#checkIf @config.custom.heroImage}}
+    <figure>
+        <img
+            src="{{@config.custom.heroImage}}"
+            {{#if @config.site.responsiveImages}}
+                {{responsiveImageAttributes @config.custom.heroImage}}
+            {{/if}}
+            {{ lazyload "eager" }}
+            {{imageDimensions @config.custom.heroImage}}
+            alt="{{@config.custom.heroAlt}}">
+
+        {{#if @config.custom.heroCaption}}
+            <figcaption>
+                {{@config.custom.heroCaption}}
+            </figcaption>
+        {{/if}}
+    </figure>
+{{/checkIfAll}}
