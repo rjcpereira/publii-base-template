@@ -2,17 +2,18 @@
 
 @import "assets/scss/reset.scss";
 
-$breakpoint-small: 56px;
-$breakpoint-medium: 72px;
-$breakpoint-large: 92px;
+$breakpoint-small: 124px;
+$breakpoint-medium: 256px;
+$breakpoint-large: 512px;
 
-header {
+header.top {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     color: #fff;
-    background: red;
+    background: #42a5f5;
+    border-bottom: 1px solid #42a5f5;
     height: $breakpoint-small;
     z-index: 3;
 

@@ -1,9 +1,9 @@
 {{> head}}
 {{> top}}
 <main>
-   {{> hero}}
-   <header class="hero__content">
-      <div>
+   <header>
+      {{> hero}}
+      <div class="grid">
          <h1>
             {{ translate 'tags.tagsPageTitle' }} 
             <sup>({{tagsNumber}})</sup>
@@ -13,8 +13,8 @@
          </p>
       </div>
    </header>
-   <div>
-      <ul class="feed feed--grid">
+   <div class="grid">
+      <ul>
          {{#each tags}}
             <li>
                <h2>

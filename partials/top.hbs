@@ -1,6 +1,6 @@
-<header class="header">
+<header class="top">
 
-    <div class="grid">
+   <div class="grid">
 
       <a href="{{@website.url}}" class="logo">
          {{#if @website.logo}}
@@ -32,4 +32,8 @@
          {{> secondary-menu menus.secondary}}
       {{/if}}
    </nav>
+
+   <section>
+      {{> search}}
+   </section>
 </header>

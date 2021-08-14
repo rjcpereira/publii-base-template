@@ -1,28 +1,31 @@
 {{> head}}
 {{> top}}
 <main>
-   {{#post}}
 
-      <article>
+   <div class="grid">
+      {{#post}}
 
-         {{> post-image}}
+         <article>
 
-         <h1>
-            {{name}}
-            <sup>({{postsNumber}})</sup>
-         </h1>
-         
-         {{#if description}}
-            <p>
-               {{description}}
-            </p>
-         {{/if}} 
+            {{> post-image}}
 
-         <div class="content">{{{text}}}</div>
+            <h1>
+               {{name}}
+               <sup>({{postsNumber}})</sup>
+            </h1>
+            
+            {{#if description}}
+               <p>
+                  {{description}}
+               </p>
+            {{/if}} 
 
-      </article>
+            <div class="content">{{{text}}}</div>
 
-   {{/post}}
+         </article>
+
+      {{/post}}
+   </div>
 </main>
 {{> footer}}
 

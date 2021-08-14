@@ -9,20 +9,23 @@
 
       {{> hero}}
 
-      {{#each posts}}
-         <article>
+      <div class="grid">
 
-            {{> post-image}}
+         {{#each posts}}
+            <article>
 
-            <h1>{{title}}</h1>
+               {{> post-image}}
 
-            <div class="excerpt">{{{excerpt}}}</div>
+               <h1>{{title}}</h1>
 
-            <a href="{{url}}">visit</a>
+               <div class="excerpt">{{{excerpt}}}</div>
 
-         </article>
-      {{/each}}
-      {{> pagination}}
+               <a href="{{url}}">visit</a>
+
+            </article>
+         {{/each}}
+         {{> pagination}}
+      </div>
    </main>
 
 {{/checkIf}}

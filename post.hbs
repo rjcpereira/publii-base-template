@@ -1,18 +1,22 @@
 {{> head}}
 {{> top}}
 <main>
-   {{#post}}
 
-      <article>
+   <div class="grid">
 
-         {{> post-image}}
+      {{#post}}
 
-         <h1>{{title}}</h1>
+         <article>
 
-         <div class="content">{{{text}}}</div>
+            {{> post-image}}
 
-      </article>
+            <h1>{{title}}</h1>
 
-   {{/post}}
+            <div class="content">{{{text}}}</div>
+
+         </article>
+
+      {{/post}}
+   </div>
 </main>
 {{> footer}}

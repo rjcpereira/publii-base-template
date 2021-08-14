@@ -7,27 +7,30 @@
 
     <main>
 
-        {{#each posts}}
-        
-            <article>           
-                {{#featuredImage}}
-                    {{#if url}}
-                    <a href="{{../url}}">
-                        {{> amp-image}}
-                    </a>
-                    {{/if}}
-                {{/featuredImage}}           
-                
-                <div>
-                    <h2>
-                        <a href="{{url}}"> {{title}} </a>
-                    </h2>                
-                    <p>{{{excerpt}}}</p>        
-                </div>          
-            </article>
-        {{/each}}
+        <div class="grid">
 
-        {{> amp-pagination}}        
+            {{#each posts}}
+            
+                <article>           
+                    {{#featuredImage}}
+                        {{#if url}}
+                        <a href="{{../url}}">
+                            {{> amp-image}}
+                        </a>
+                        {{/if}}
+                    {{/featuredImage}}           
+                    
+                    <div>
+                        <h2>
+                            <a href="{{url}}"> {{title}} </a>
+                        </h2>                
+                        <p>{{{excerpt}}}</p>        
+                    </div>          
+                </article>
+            {{/each}}
+
+            {{> amp-pagination}}     
+        </div>   
     </main>
 
 {{/checkIf}}	

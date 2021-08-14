@@ -1,27 +1,29 @@
 {{> amp-head}}
 
-    <main >
-        {{#post}}
-        <article>
+    <main>
+        <div class="grid">
+            {{#post}}
+                <article>
 
-            {{> amp-post-image}}
+                    {{> amp-post-image}}
+                    
+                    <div>
+                        <header>
+                            <h1>
+                                {{title}}
+                            </h1>
+                        </header>
+
+                        {{{text}}}
+                        
+                        {{> share}}
+                    
+                    </div>
+                </article>
+                
+            {{/post}}
             
-             <div>
-                <header>
-                    <h1>
-                        {{title}}
-                    </h1>
-                </header>
-
-                {{{text}}}
-                 
-                {{> share}}
-             
-            </div>
-        </article>
-        
-        {{/post}}
-       
+        </div>
        
     </main>
 {{> amp-footer}}

@@ -2,34 +2,33 @@
 {{> top}}
 <main>
 
-   <h1>{{ translate 'search' }}</h1>
+   <div class="grid">
 
-   <fieldset action="{{@website.searchUrl}}">
-      <input
-         type="text"
-         name="{{@config.custom.searchParam}}"
-         placeholder="{{ translate 'searching' }}"
-      />
-      <button>
-         {{{ icon 'search' }}}
-      </button>
-   </fieldset>
+      <h1>{{ translate 'search' }}</h1>
 
-   {{#search}}
-   
-      <article>
+      <fieldset action="{{@website.searchUrl}}">
+         {{> search}}
+         <button>
+            {{{ icon 'search' }}}
+         </button>
+      </fieldset>
 
-         {{> post-image}}
+      {{#search}}
+      
+         <article>
 
-         <h1>{{title}}</h1>
+            {{> post-image}}
 
-         <div class="excerpt">{{{excerpt}}}</div>
+            <h1>{{title}}</h1>
 
-         <a href="{{url}}">visit</a>
+            <div class="excerpt">{{{excerpt}}}</div>
 
-      </article>
+            <a href="{{url}}">visit</a>
 
-   {{/search}}
+         </article>
+
+      {{/search}}
+   </div>
    
 </main>
 {{> footer}}

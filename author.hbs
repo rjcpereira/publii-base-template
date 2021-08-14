@@ -1,36 +1,37 @@
 {{> head}}
 {{> top}}
 <main>
-   {{#author}}
-      <header>
 
-         {{> post-image}}
-         
-         <div>          
-            {{#if avatar}}
-               <img 
-                     src="{{avatar}}" 
-                     {{ lazyload "lazy" }} 
-                     alt="{{name}}"
-                  >
-            {{/if}}
-            <h1>
-               {{name}}
-               <sup>({{postsNumber}})</sup>
-            </h1>
-            {{#if description}}
-               <p>{{description}}</p>
-            {{/if}}   
-            {{#if website}}
-               <p>
-                  {{{ icon 'website' }}}
-                  <a href="{{website}}" target="_blank" rel="nofollow noreferrer noopener">{{ website }}</a>
-               </p>
-            {{/if}}  
-         </div>
-      </header>
-   {{/author}}
-   <div>
+   <div class="grid">
+      {{#author}}
+         <header>
+
+            {{> post-image}}
+            
+            <div>          
+               {{#if avatar}}
+                  <img 
+                        src="{{avatar}}" 
+                        {{ lazyload "lazy" }} 
+                        alt="{{name}}"
+                     >
+               {{/if}}
+               <h1>
+                  {{name}}
+                  <sup>({{postsNumber}})</sup>
+               </h1>
+               {{#if description}}
+                  <p>{{description}}</p>
+               {{/if}}   
+               {{#if website}}
+                  <p>
+                     {{{ icon 'website' }}}
+                     <a href="{{website}}" target="_blank" rel="nofollow noreferrer noopener">{{ website }}</a>
+                  </p>
+               {{/if}}  
+            </div>
+         </header>
+      {{/author}}
       {{#each posts}}
          <article>
             <header>

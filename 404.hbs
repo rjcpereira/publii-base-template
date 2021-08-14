@@ -1,23 +1,27 @@
 {{> head}}
 {{> top}}
 <main>
-   <article>
-         
-      <header>
-         {{> hero}}
-         <div>
-            <h1>{{ translate 'error.404' }}</h1>
-            <p>{{ translate 'error.message-1' }}</p>
-         </div>
-      </header>
 
-      <div>
-         <p>{{ translate 'error.message-2' }}</p>
-         <p>
-            {{{ icon 'prev' }}}
-            <a href="{{@website.url}}">{{ translate 'error.button' }}</a>
-         </p>
-      </div>
-   </article>
+   <div class="grid">
+      
+      <article>
+            
+         <header>
+            {{> hero}}
+            <div>
+               <h1>{{ translate 'error.404' }}</h1>
+               <p>{{ translate 'error.message-1' }}</p>
+            </div>
+         </header>
+
+         <div>
+            <p>{{ translate 'error.message-2' }}</p>
+            <p>
+               {{{ icon 'prev' }}}
+               <a href="{{@website.url}}">{{ translate 'error.button' }}</a>
+            </p>
+         </div>
+      </article>
+   </div>
 </main>
 {{> footer}}
