@@ -1,23 +1,29 @@
 {{> head}}
 {{> top}}
 
-<main>
+{{#checkIf @config.custom.frontSource '==' "post" }}
+   {{> frontpage-post}}
+{{else}}
 
-   {{> hero}}
+   <main>
 
-   {{#each posts}}
-      <article>
+      {{> hero}}
 
-         {{> post-image}}
+      {{#each posts}}
+         <article>
 
-         <h1>{{title}}</h1>
+            {{> post-image}}
 
-         <div class="excerpt">{{{excerpt}}}</div>
+            <h1>{{title}}</h1>
 
-         <a href="{{url}}">visit</a>
+            <div class="excerpt">{{{excerpt}}}</div>
 
-      </article>
-   {{/each}}
-   {{> pagination}}
-</main>
+            <a href="{{url}}">visit</a>
+
+         </article>
+      {{/each}}
+      {{> pagination}}
+   </main>
+
+{{/checkIf}}
 {{> footer}}

@@ -67,14 +67,14 @@
         {
             "name": "separator",
             "type": "separator",
-            "label": " ",
-            "group": "Main",
+            "label": "Favicon",
+            "group": "Favicon",
             "size": "small"
         },
         {
             "name": "faviconImage",
             "label": "Favicon file",
-            "group": "Main",
+            "group": "Favicon",
             "note": "The ideal size of a favicon is 16x16 pixels. Save your favicon as either favicon.png or favicon.ico",
             "value": "",
             "type": "smallupload",
@@ -83,7 +83,7 @@
         {
             "name": "faviconExtension",
             "label": "Favicon extension",
-            "group": "Additional",
+            "group": "Favicon",
             "value": "image/x-icon",
             "type": "select",
             "options": [
@@ -100,28 +100,45 @@
         {
             "name": "separator",
             "type": "separator",
-            "label": " ",
-            "group": "Layout",
+            "label": "Home",
+            "group": "Home",
             "size": "small"
         },
         {
+            "name": "frontSource",
+            "label": "Front page",
+            "group": "Home",            
+            "value": "default",
+            "type": "radio",
+            "options": [
+                {
+                    "label": "Latest posts",
+                    "value": "default"
+                },
+                {
+                    "label": "Main post",
+                    "value": "main"
+                }
+            ]
+        }, 
+        {
             "name": "frontPost",
-            "label": "Posts",
-            "group": "Layout",
+            "label": "Main post",
+            "group": "Home",
             "note": "We strongly recommended 'hide' and 'noindex' the selected post to avoid the duplicate content issue.",
             "value": "",
             "type": "posts-dropdown", 
             "dependencies": [
             {
                 "field": "frontSource",
-                "value": "post"
+                "value": "main"
             }]
         },
 
         {
             "name": "separator",
             "type": "separator",
-            "label": " ",
+            "label": "Hero",
             "group": "Hero",
             "size": "small"
         },

@@ -1,32 +1,33 @@
 {{#featuredImage}}
     {{#if url}}
-    <figure>
-        <amp-img
-            src="{{url}}"
-            alt="{{alt}}"
-            {{#if srcset.amp}}
-                srcset="{{srcset.amp}}"
-            {{else}}
-                {{#if srcset}}
-                srcset="{{srcset}}"
+        <figure>
+            <amp-img
+                src="{{url}}"
+                alt="{{alt}}"
+                {{#if srcset.amp}}
+                    srcset="{{srcset.amp}}"
+                {{else}}
+                    {{#if srcset}}
+                    srcset="{{srcset}}"
+                    {{/if}}
                 {{/if}}
-            {{/if}}
-            {{#if sizes.amp}}
-                sizes="{{sizes.amp}}"
-            {{else}}
-                {{#if sizes}}
-                sizes="{{sizes}}"
+                {{#if sizes.amp}}
+                    sizes="{{sizes.amp}}"
+                {{else}}
+                    {{#if sizes}}
+                    sizes="{{sizes}}"
+                    {{/if}}
                 {{/if}}
-            {{/if}}
-            height="{{height}}"
-            layout="responsive"
-            width="{{width}}">
-        </amp-img>
-        {{#checkIfAny caption credits}}
-        <figcaption>
-            {{caption}} {{credits}}
-        </figcaption>
-        {{/checkIfAny}}
+                height="{{height}}"
+                layout="responsive"
+                width="{{width}}"
+            >
+            </amp-img>
+            {{#checkIfAny caption credits}}
+                <figcaption>
+                    {{caption}} {{credits}}
+                </figcaption>
+            {{/checkIfAny}}
         </figure>
     {{/if}}
 {{/featuredImage}}
