@@ -65,6 +65,46 @@
     ],
     "customConfig": [
         {
+            "name": "separator",
+            "type": "separator",
+            "label": " ",
+            "group": "Main",
+            "size": "small"
+        },
+        {
+            "name": "faviconImage",
+            "label": "Favicon file",
+            "group": "Main",
+            "note": "The ideal size of a favicon is 16x16 pixels. Save your favicon as either favicon.png or favicon.ico",
+            "value": "",
+            "type": "smallupload",
+            "upload": true
+        },
+        {
+            "name": "faviconExtension",
+            "label": "Favicon extension",
+            "group": "Additional",
+            "value": "image/x-icon",
+            "type": "select",
+            "options": [
+                {
+                    "label": ".ico",
+                    "value": "image/x-icon"
+                },
+                {
+                    "label": ".png",
+                    "value": "image/png"
+                }]
+        },
+
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": " ",
+            "group": "Layout",
+            "size": "small"
+        },
+        {
             "name": "frontPost",
             "label": "Posts",
             "group": "Layout",
@@ -78,7 +118,13 @@
             }]
         },
 
-
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": " ",
+            "group": "Hero",
+            "size": "small"
+        },
         {
             "name": "heroImage",
             "label": "Image",
@@ -102,7 +148,7 @@
             "placeholder": "Add text caption to the hero image",
             "value": "",
             "type": "text"
-        },
+        }
     ],
     "customElements": [],
     "postConfig": [],
