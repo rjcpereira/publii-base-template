@@ -51,7 +51,7 @@ Renders an SVG icon
 </a>
 ```
 
-#### Search
+#### Search (not working yet)
 
 Listen to search inputs, it the current location is `search` the results will filtered
 
