@@ -78,6 +78,38 @@
 		element.removeEventListener(event, next);
 	}
 
+	function getQueryString(key) {
+
+		var search = location.search.substring(1);
+
+		if(!search) return;
+
+		var query = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+
+		if(!query) return;
+
+		return !key ? query : query[key];
+	}
+
+	function setQueryString(query) {
+
+		var args = [];
+
+		if(query) for(var key in query) args.push(`${key}=${query[key]}`);
+
+		if (history.pushState) {
+
+			var url = window.location.protocol + "//" + window.location.host + window.location.pathname;
+			
+			if(args.length) url += `?${args.join('&')}`;
+			
+			window.history.pushState({
+				path: url
+			}, '', url);
+		}
+		else window.location.search = !args.length ? '' : `?${args.join('&')}`;
+	}
+
 	function filter(keyword) {
 
 		clearTimeout(state.search);
@@ -99,6 +131,10 @@
 			});
 		}, 250);
 
+		setQueryString({
+			q: keyword
+		});
+
 		loop(state.inputs, function(input) {
 
 			if(input.value != keyword) input.value = keyword || '';
@@ -109,19 +145,16 @@
 
 		state.inputs = getElements('input[data-search]');
 
+		var value = getQueryString('q');
+
 		loop(state.inputs, function(input) {
+
+			value && filter(value);
 
 			onChange(input, function(evt) {
 
 				filter(evt.target.value);
 			});
-		});
-
-		var submit = getElement('button[data-search]');
-
-		onClick(submit, function() {
-
-			console.log('submit');
 		});
 
 		state.results = getElements('article[data-search]');

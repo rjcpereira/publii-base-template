@@ -2,16 +2,13 @@
 
    <div class="grid">
 
-      <form>
+      <form action="{{@website.searchUrl}}">
          {{> search}}
-         <button data-search="">
+         <button>
             {{ translate 'search' }}
             {{{ icon 'search' }}}
          </button>
       </form>
-
-      <a href="search.html">search.html</a>
-      <a href="search/index.html">search/index.html</a>
 
       <a href="{{@website.url}}" class="logo">
          {{#if @website.logo}}
