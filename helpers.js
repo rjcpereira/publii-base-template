@@ -1,5 +1,7 @@
 const icons = require('./icons');
 
+const parse = str => (str || '').toLowerCase();
+
 const helpers = {
     icon: params => {
 
@@ -16,12 +18,13 @@ const helpers = {
 
         let posts = [];
         
-        content.data.website.contentStructure.posts.forEach(post => (!post.isHidden && posts.push(JSON.stringify({
+        content.data.website.contentStructure.posts.forEach(post => (!post.isHidden && posts.push(content.fn({
             ...post,
-            text: ''
+            text: '',
+            keyword: `${parse(post.title)}${parse(post.excerpt)}${parse(JSON.stringify(post.postViewConfig || {}))}`
         }))));
 
-        return `<pre data-search="">${posts.join('')}</pre>`;
+        return posts.join('');
 
     },
     debug: content => {

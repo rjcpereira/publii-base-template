@@ -1,10 +1,6 @@
 (function () {
-
-    var config = {};
-
-	var inputs;
-
-	var results = [];
+	
+	var state = {};
 
 	const parse = str => (str || '').toLowerCase();
 
@@ -22,16 +18,41 @@
 
         if(arr && next) for(var i = 0; i < arr.length; i++) next(arr[i]);
     }
-    
-	function hasClass(element, css) {}
-    
-	function toggleClass(element, css) {}
 
-	function addClass(element, css) {}
+	function hasClass(element, css) {
+        
+		if(!element || !css) return;
+        
+		return !element ? false : (element.classList ? element.classList.contains(css) : (new RegExp('(^|\\s)' + css + '(\\s|$)')).test(element.className));
+    }
 
-	function removeClass(element, css) {}
+    function addClass(element, css) {
+        
+		if(!element || !css) return;
+        
+		!element.classList ? !hasClass(element, css) && (element.className += (element.className ? ' ' : '') + css) : element.classList.add(css);
+    }
 
-	function setClass(element, css, status) {}
+    function removeClass(element, css) {
+        
+		if(!element || !css) return;
+        
+		!element.classList ? (element.className = trim(element.className.replace(css, '')), !element.className && element.removeAttribute('class')) : element.classList.remove(css);
+    }
+
+    function toggleClass(element, css) {
+        
+		if(!element || !css) return;
+        
+		!element.classList ? (hasClass(element, css) ? removeClass(element, css) : addClass(element, css)) : element.classList.toggle(css);
+    }
+
+    function setClass(element, css, status) {
+        
+		if(!element || !css) return;
+        
+        !status ? removeClass(element, css) : addClass(element, css);
+    }
 
 	function onChange(element, next) {
 
@@ -57,30 +78,60 @@
 		element.removeEventListener(event, next);
 	}
 
-	function search() {}
+	function filter(keyword) {
 
-	function init() {
+		clearTimeout(state.search);
 
-		inputs = getElements('input[data-search]');
-		console.log(inputs)
+		state.search = setTimeout(function() {
 
-		loop(inputs, function(input) {
+			loop(state.results, function(result) {
+
+				var hide = !result || !keyword || !result.hasAttribute('data-search');
+				
+				if(!hide) {
+
+					var value = result.getAttribute('data-search');
+
+					hide = !value.includes(keyword);
+				}
+
+				setClass(result, 'active', !hide);
+			});
+		}, 250);
+
+		loop(state.inputs, function(input) {
+
+			if(input.value != keyword) input.value = keyword || '';
+		});
+	}
+
+	function search() {
+
+		state.inputs = getElements('input[data-search]');
+
+		loop(state.inputs, function(input) {
 
 			onChange(input, function(evt) {
 
-				console.log('change', evt.target.value);
+				filter(evt.target.value);
 			});
 		});
 
 		var submit = getElement('button[data-search]');
-		console.log(submit)
 
 		onClick(submit, function() {
 
 			console.log('submit');
 		});
+
+		state.results = getElements('article[data-search]');
+	}
+
+	function init() {
+
+		search();
 	}
 
 	window.addEventListener('load', init);
 	
-})();
+})();   
