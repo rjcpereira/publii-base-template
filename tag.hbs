@@ -2,38 +2,6 @@
 {{> top}}
 <main>
 
-   <div class="grid">
-      {{#post}}
-
-         <article>
-
-            {{> post-image}}
-
-            <h1>
-               {{name}}
-               <sup>({{postsNumber}})</sup>
-            </h1>
-            
-            {{#if description}}
-               <p>
-                  {{description}}
-               </p>
-            {{/if}} 
-
-            <div class="content">{{{text}}}</div>
-
-         </article>
-
-      {{/post}}
-   </div>
-</main>
-{{> footer}}
-
-
-{{> head}}
-{{> top}}
-<main>
-
    {{#tag}}
       <header>
 
