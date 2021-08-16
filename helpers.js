@@ -106,14 +106,14 @@ const helpers = {
 
         const data = content.data.website.contentStructure;
 
-        return !debug ? '' : `<script>
+        return !debug || debug == '0' ? '' : (`<script>
             ${!prod ? '' : 'console.warn(\'Debug is not recommended in production\')'};
             console.log(${JSON.stringify(content.data)});
             console.log('config', ${JSON.stringify(content.data.config)});
             console.log('authors', ${JSON.stringify(data.authors)});
             console.log('posts', ${JSON.stringify(data.posts)});
             console.log('tags', ${JSON.stringify(data.tags)});
-        </script>`;
+        </script>`);
     }
 };
 
