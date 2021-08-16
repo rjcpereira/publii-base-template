@@ -165,6 +165,32 @@
             "placeholder": "Add text caption to the hero image",
             "value": "",
             "type": "text"
+        },
+
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": "Admin",
+            "group": "Admin",
+            "size": "small"
+        },
+        {
+            "name": "debug",
+            "label": "Console log data",
+            "note": "Not recommended in production",
+            "group": "Admin",            
+            "value": "0",
+            "type": "radio",
+            "options": [
+                {
+                    "label": "Disabled",
+                    "value": "0"
+                },
+                {
+                    "label": "Enabled",
+                    "value": "1"
+                }
+            ]
         }
     ],
     "customElements": [],

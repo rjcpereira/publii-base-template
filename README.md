@@ -31,9 +31,9 @@ You can change the theme name, info and config in these files:
 
 - run `gulp` or `gulp dev`
 
-### Helpers
+## Helpers
 
-#### Debug (not recommended in production)
+### Debug (_not recommended in production_)
 
 Console log with all content data
 
@@ -41,7 +41,7 @@ Console log with all content data
 {{#debug}}{{/debug}}
 ```
 
-#### Icon
+### Icon
 
 Renders an SVG icon
 
@@ -55,9 +55,11 @@ Renders an SVG icon
 </a>
 ```
 
-#### Search (not working yet)
+### Search
 
-Listen to search inputs, it the current location is `search` the results will filtered
+Computed search inputs & query string, if the current location is `search` the results will filtered
+
+_this will list all posts and show/hide them via CSS & JS, the text field is not imported_
 
 ```handlebars
 <header>
@@ -78,16 +80,16 @@ Listen to search inputs, it the current location is `search` the results will fi
 {{/search}}
 ```
 
-### Javascript and SCSS development
+## Javascript and SCSS
 
-Every change on `scripts.js` and `styles.scss` will minify and save the content in the current working directory and in the preview assets folder.
+Using `gulp`, every change on `scripts.js` and `styles.scss` will minify and save the content in the current working directory and in the preview assets folder.
 
-#### scripts.js
+### scripts.js
 
 - `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE/assets/js/scripts.min.js`
 - `Publii/sites/YOUR_SITE/preview/themes/BASE_TEMPLATE/assets/js/scripts.min.js`
 
-#### styles.scss (scss/reset.scss & scss/mixins.scss)
+### styles.scss (scss/reset.scss & scss/mixins.scss)
 
 - `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE/assets/css/main.scss`
 - `Publii/sites/YOUR_SITE/input/themes/BASE_TEMPLATE/assets/css/styles.scss`

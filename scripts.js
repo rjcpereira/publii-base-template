@@ -14,6 +14,24 @@
         return (context || document).querySelectorAll(selector);
     }
 
+	function createElement(tag, attrs, parent) {
+
+		if(!tag) return;
+
+		var element = document.createElement(tag);
+
+		for(var attr in attrs) element.setAttribute(attr, attrs[attr]);
+
+		parent && parent.appendChild(element);
+		
+		return element;
+	}
+
+	function removeElement(element) {
+		
+		element && element.parentNode.removeChild(element);
+	}
+
 	function loop(arr, next) {
 
         if(arr && next) for(var i = 0; i < arr.length; i++) next(arr[i]);
@@ -112,6 +130,8 @@
 
 	function filter(keyword) {
 
+		keyword = parse(keyword);
+
 		clearTimeout(state.search);
 
 		state.search = setTimeout(function() {
@@ -122,7 +142,7 @@
 				
 				if(!hide) {
 
-					var value = result.getAttribute('data-search');
+					var value = parse(result.getAttribute('data-search'));
 
 					hide = !value.includes(keyword);
 				}
@@ -160,9 +180,58 @@
 		state.results = getElements('article[data-search]');
 	}
 
+	function calendar() {
+
+		var today = getElement('.today');
+
+		if(!today) return;
+
+		var days = getElements('[data-day]', today);
+
+		if(!days) return;
+
+		var now = new Date().getDate();
+
+		loop(days, function(element) {
+
+			var day = element.getAttribute('data-day');
+
+			day && day != now && removeElement(element);
+		});
+
+		addClass(today, 'ready');
+	}
+
+	function list() {
+
+		var lists = getElements('.list');
+
+		if(!lists) return;
+
+		loop(lists, function(element) {
+			
+			var trigger = createElement('button', {
+				class: 'toggler'
+			}, element);
+			
+			onClick(trigger, function() {
+
+				var status = !hasClass(trigger, 'active');
+
+				setClass(trigger, 'active', status);
+
+				setClass(element, 'view', status);
+			});
+		});
+	}
+
 	function init() {
 
 		search();
+
+		calendar();
+
+		list();
 	}
 
 	window.addEventListener('load', init);
