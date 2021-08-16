@@ -8,6 +8,40 @@
    <main>
 
       {{> hero}}
+      
+      <div class="today">
+         {{> calendar}}
+      </div>
+
+      <div class="highlights styled">
+
+         {{#highlights}}
+
+            <article>
+
+               {{> post-image}}
+
+               {{title}}
+
+            </article>
+
+         {{/highlights}}
+      </div>
+
+      <div class="partners">
+   
+         {{#partners}}
+
+            <article>
+
+               {{> post-image}}
+
+               {{title}}
+
+            </article>
+
+         {{/partners}}
+      </div>
 
       <div class="grid">
 

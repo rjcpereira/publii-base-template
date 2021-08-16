@@ -10,11 +10,38 @@ const config = {
 
 const parse = str => (str || '').toLowerCase();
 
-const isProduct = post => (post && post.template && post.template == 'product');
+const isVisible = post => (post && !post.isHidden);
 
-const isRecepie = post => (post && post.template && post.template == 'recepie');
+const isHighlight = post => (isVisible(post) && post.isFeatured);
 
-const isMeal = post => (post && isRecepie(post) && post.postViewConfig && (post.postViewConfig.recepieDay || post.postViewConfig.recepieMeal));
+const isPartner = post => (isVisible(post) && post.template && post.template == 'partner');
+
+const isProduct = post => (isVisible(post) && post.template && post.template == 'product');
+
+const isRecepie = post => (isVisible(post) && post.template && post.template == 'recepie');
+
+const isMeal = post => (isVisible(post) && isRecepie(post) && post.postViewConfig && (post.postViewConfig.recepieDay || post.postViewConfig.recepieMeal));
+
+const resultset = (key, content, validate) => {
+
+    const total = !key ? '' : parseInt(content.data.config.custom[key] || 0);
+
+    if(!total) return '';
+
+    let posts = [];
+
+    const next = post => posts.push(content.fn({
+        featuredImage: {},
+        ...(post || {}),
+        text: ''
+    }));
+    
+    content.data.website.contentStructure.posts.forEach(post => (!validate ? next(post) : (validate(post) && next(post))));
+
+    if(posts.length > total) posts.length = total;
+
+    return posts.join('');
+}
 
 const helpers = {
     calendar: content => {
@@ -26,6 +53,7 @@ const helpers = {
         let meals = {};
     
         for(let meal in config.meals) meals[meal] = {
+            featuredImage: {},
             subtitle: config.meals[meal],
             meal
         };
@@ -51,7 +79,9 @@ const helpers = {
                 const meal = post.postViewConfig.recepieMeal;
     
                 day && meal && init(day, meal, {
-                    ...(post || {}),
+                    ...(post || {
+                        featuredImage: {}
+                    }),
                     subtitle: config.meals[meal],
                     day,
                     meal,
@@ -70,7 +100,10 @@ const helpers = {
 
         let posts = [];
 
-        content.data.website.contentStructure.posts.forEach(post => (isProduct(post) && posts.push(content.fn(post))));
+        content.data.website.contentStructure.posts.forEach(post => (isProduct(post) && posts.push(content.fn({
+            featuredImage: {},
+            ...post
+        }))));
 
         return posts.join('');
     },
@@ -90,13 +123,21 @@ const helpers = {
         let posts = [];
         
         content.data.website.contentStructure.posts.forEach(post => (!post.isHidden && posts.push(content.fn({
+            featuredImage: {},
             ...post,
             text: '',
             keyword: `${parse(post.title)}${parse(post.excerpt)}${parse(JSON.stringify(post.postViewConfig || {}))}`
         }))));
 
         return posts.join('');
+    },
+    highlights: content => {
 
+        return resultset('homeHighlights', content, post => isHighlight(post));
+    },
+    partners: content => {
+
+        return resultset('homePartners', content, post => isPartner(post));
     },
     debug: content => {
 

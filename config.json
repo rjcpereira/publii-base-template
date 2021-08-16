@@ -134,6 +134,20 @@
                 "value": "main"
             }]
         },
+        {
+            "name": "homeHighlights",
+            "label": "Número de destaques",
+            "group": "Home",
+            "value": 8,
+            "type": "number"
+        },
+        {
+            "name": "homePartners",
+            "label": "Número de parceiros",
+            "group": "Home",
+            "value": 4,
+            "type": "number"
+        },
 
         {
             "name": "separator",
